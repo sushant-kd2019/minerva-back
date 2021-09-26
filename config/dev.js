@@ -6,4 +6,5 @@ module.exports = {
     GITHUB_CALLBACK_URL: 'http://localhost:5000/api/auth/github/callback',
     GOOGLE_CLIENT_ID:  '292921574719-88ujnbthccev1ui8mbkg3lm6dma9aprv.apps.googleusercontent.com',
     GOOGLE_CLIENT_SECRET: 'MqD09jkI8Z3KmoacnOKMYFOP',
+    GOOGLE_CALLBACK_URL: 'http://localhost:5000/api/auth/google/callback',
 }
