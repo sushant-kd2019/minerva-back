@@ -7,7 +7,7 @@ const app = express()
 const AuthRoute = require('./routes/AuthRoutes')
 const MongoStore = require('connect-mongo')
 const passport = require('./services/passport')
-require(dotenv).config()
+require('dotenv').config();
 app.use(express.json())
 app.use(
     session({
