@@ -1,13 +1,12 @@
 const express = require('express')
 const mongoose = require('mongoose')
 const session = require('express-session')
-const PORT = process.envPORT || 5000
+const PORT = process.env.PORT || 5000
 const { URI, SECRET } = require('./config')
 const app = express()
 const AuthRoute = require('./routes/AuthRoutes')
 const MongoStore = require('connect-mongo')
 const passport = require('./services/passport')
-require('dotenv').config();
 app.use(express.json())
 app.use(
     session({
