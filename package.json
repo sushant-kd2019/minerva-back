@@ -3,6 +3,10 @@
     "version": "1.0.0",
     "description": "Group project",
     "main": "index.js",
+    "engines": {
+        "node": "14.3.0",
+        "npm": "6.14.5"
+    },
     "scripts": {
         "start": "nodemon index.js",
         "test": "echo \"Error: no test specified\" && exit 1",
