@@ -7,7 +7,7 @@ if (process.env.NODE_ENV === 'production') {
     console.log(process.env.GITHUB_CLIENT_SECRET)
     console.log(process.env.GITHUB_CALLBACK_URL)
     console.log(process.env.GOOGLE_CLIENT_ID)
-    console.log(process.env.process.env.GOOGLE_CLIENT_SECRET)
+    console.log(process.env.GOOGLE_CLIENT_SECRET)
 } else {
     
     module.exports = require('./dev')
