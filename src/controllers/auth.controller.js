@@ -1,5 +1,3 @@
-const User = require('../models/User')
-
 const LogoutController = (req, res) => {
     req.logout()
     res.redirect('/')
@@ -7,14 +5,21 @@ const LogoutController = (req, res) => {
 
 const getUserController = (req, res) => {
     if (!req.user) {
-        return res.status(401).json({ error: 'unauthorized', status: false })
+        return res.status(401).json({
+            isLoggedIn: false,
+            message: 'User is not logged in.',
+            user: {
+                name: '',
+                avatar: '',
+            },
+        })
+    } else {
+        return res.status(200).json({
+            isLoggedIn: true,
+            message: 'Log in Successful',
+            user: req.user,
+        })
     }
-
-    res.status(200).json({
-        status: true,
-        msg: 'user successfully fetched',
-        user: req.user,
-    })
 }
 
 const githubLoginController = (req, res) => {

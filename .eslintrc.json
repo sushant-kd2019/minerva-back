@@ -11,10 +11,13 @@
         "sourceType": "module",
         "ecmaVersion": 2018
     },
-    "settings": {
-        "react": {
-            "version": "detect"
-        }
-    },
-    "rules": {}
+    "settings": {},
+    "rules": {
+        "prettier/prettier": [
+            "error",
+            {
+                "endOfLine": "auto"
+            }
+        ]
+    }
 }
