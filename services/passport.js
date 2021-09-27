@@ -9,6 +9,7 @@ const {
     GITHUB_CALLBACK_URL,
     GOOGLE_CLIENT_ID,
     GOOGLE_CLIENT_SECRET,
+    GOOGLE_CALLBACK_URL,
 } = require('../config')
 
 passport.serializeUser((user, done) => {
@@ -64,7 +65,7 @@ passport.use(
         {
             clientID: GOOGLE_CLIENT_ID,
             clientSecret: GOOGLE_CLIENT_SECRET,
-            callbackURL: 'http://localhost:5000/api/auth/google/callback',
+            callbackURL: GOOGLE_CALLBACK_URL,
             passReqToCallback: true,
         },
         async (request, accessToken, refreshToken, profile, done) => {
