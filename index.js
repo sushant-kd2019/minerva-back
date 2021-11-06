@@ -4,7 +4,7 @@ const session = require('express-session')
 const PORT = process.envPORT || 5000
 const { URI, SECRET } = require('./config')
 const app = express()
-const AuthRoute = require('./routes/AuthRoutes')
+const AuthRoute = require('./routes/auth.routes')
 const MongoStore = require('connect-mongo')
 const passport = require('./services/passport')
 app.use(express.json())
