@@ -6,7 +6,7 @@ const {
     githubLoginController,
     LogoutController,
     googleLoginController,
-} = require('../controllers/AuthController')
+} = require('../controllers/auth.controller')
 
 const router = express.Router()
 
