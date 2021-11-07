@@ -5,6 +5,7 @@ const PORT = process.env.PORT || 5000
 const cors = require('cors')
 const app = express()
 const AuthRoute = require('./routes/auth.routes')
+const CrudRoute = require('./routes/crud.routes')
 const passport = require('./services/passport')
 const config = require('./config')
 app.use(express.json())
@@ -18,7 +19,7 @@ app.use(
 )
 app.use(
     session({
-        secret: config.COOKIE_SECRET,
+        secret: config.SECRET,
         name: 'minerva',
         resave: false,
         saveUninitialized: false,
@@ -36,6 +37,7 @@ app.use(passport.initialize())
 app.use(passport.session())
 
 app.use('/api/auth', AuthRoute)
+app.use('/api/roadmaps',CrudRoute)
 
 mongoose
     .connect(config.DB.URI, { useNewUrlParser: true, useUnifiedTopology: true })
