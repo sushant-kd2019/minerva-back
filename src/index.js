@@ -19,7 +19,7 @@ app.use(
 )
 app.use(
     session({
-        secret: config.SECRET,
+        secret: config.COOKIE_SECRET,
         name: 'minerva',
         resave: false,
         saveUninitialized: false,
@@ -37,7 +37,7 @@ app.use(passport.initialize())
 app.use(passport.session())
 
 app.use('/api/auth', AuthRoute)
-app.use('/api/roadmaps',CrudRoute)
+app.use('/api/roadmaps', CrudRoute)
 
 mongoose
     .connect(config.DB.URI, { useNewUrlParser: true, useUnifiedTopology: true })
