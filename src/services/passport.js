@@ -25,9 +25,9 @@ passport.deserializeUser(async (user, done) => {
 passport.use(
     new GithubStrategy(
         {
-            clientID: config.GITHUB_KEY.CLIENT_ID,
-            clientSecret: config.GITHUB_KEY.CLIENT_SECRET,
-            callbackURL: `${config.SERVER_URL}/api/auth/github/callback`,
+            clientID: process.env.GITHUB_CLIENT_ID,
+            clientSecret: process.env.GITHUB_CLIENT_SECRET,
+            callbackURL: process.env.GITHUB_CALLBACK_URL,
         },
         async (accessToken, refreshToken, profile, done) => {
             try {
@@ -61,36 +61,36 @@ passport.use(
     ),
 )
 
-passport.use(
-    new GoogleStrategy(
-        {
-            clientID: config.GOOGLE_KEY.CLIENT_ID,
-            clientSecret: config.GOOGLE_KEY.CLIENT_SECRET,
-            callbackURL: `${config.SERVER_URL}/api/auth/google/callback`,
-            passReqToCallback: true,
-        },
-        async (req, accesToken, refreshToken, profile, done) => {
-            try {
-                const user = await User.findOne({ id: profile.id })
-                if (user) {
-                    return done(null, user)
-                } else {
-                    const newUser = new User({
-                        username: profile.displayName,
-                        email: profile.emails[0].value,
-                        avatar: profile.photos[0].value,
-                        id: profile.id,
-                        provider: 'Google',
-                    })
+// passport.use(
+//     new GoogleStrategy(
+//         {
+//             clientID: config.GOOGLE_KEY.CLIENT_ID,
+//             clientSecret: config.GOOGLE_KEY.CLIENT_SECRET,
+//             callbackURL: `${config.SERVER_URL}/api/auth/google/callback`,
+//             passReqToCallback: true,
+//         },
+//         async (req, accesToken, refreshToken, profile, done) => {
+//             try {
+//                 const user = await User.findOne({ id: profile.id })
+//                 if (user) {
+//                     return done(null, user)
+//                 } else {
+//                     const newUser = new User({
+//                         username: profile.displayName,
+//                         email: profile.emails[0].value,
+//                         avatar: profile.photos[0].value,
+//                         id: profile.id,
+//                         provider: 'Google',
+//                     })
 
-                    const saveUser = await newUser.save()
-                    done(null, saveUser)
-                }
-            } catch (err) {
-                done(err)
-            }
-        },
-    ),
-)
+//                     const saveUser = await newUser.save()
+//                     done(null, saveUser)
+//                 }
+//             } catch (err) {
+//                 done(err)
+//             }
+//         },
+//     ),
+// )
 
 module.exports = passport
